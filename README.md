@@ -22,7 +22,7 @@ python merge_fasta.py -in ./test/input_1.fasta ./test/input_2.fasta -out ./test/
 ```
 
 ## Required:
-* python >3.6
+* python >= 3.6
 * pandas
 
 
