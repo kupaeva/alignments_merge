@@ -9,7 +9,7 @@ Additionally you can create NEXUS file with the length parameters of your sequen
     -h, --help         show this help message and exit
   
     -in [IN [IN ...]]  paths to all alignment files in fasta format, which you
-                     want merge
+                     want merge. You can use any count of sequences, not only 2. 
                      
     -out OUT           path to output fasta file with merged sequences
   
