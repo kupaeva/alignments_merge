@@ -6,11 +6,14 @@ Here it reads fasta filesfrom IN paths, merge it by name, and write to the OUT f
 Additionally you can create NEXUS file with the length parameters of your sequences.
 
 ## Options:
-  -h, --help         show this help message and exit
-  -in [IN [IN ...]]  paths to all alignment files in fasta format, which you
+    -h, --help         show this help message and exit
+  
+    -in [IN [IN ...]]  paths to all alignment files in fasta format, which you
                      want merge
-  -out OUT           path to output fasta file with merged sequences
-  -nexus NEXUS       path to output nexus file with length parameters of your
+                     
+    -out OUT           path to output fasta file with merged sequences
+  
+    -nexus NEXUS       path to output nexus file with length parameters of your
                      sequences
 
 ## Example of usage: 
