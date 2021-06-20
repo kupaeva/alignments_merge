@@ -1,4 +1,4 @@
-# alignments_merge
+# merge fasta
 Python script for merging few alignments in FASTA format. 
 
 It is a script for phylogenetic alignments merging. 
