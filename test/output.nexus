@@ -1,0 +1,6 @@
+#nexus
+begin sets;
+	CHARSET input_1.fasta = 1-16;
+	CHARSET input_2.fasta = 17-48;
+end;
+
