@@ -42,6 +42,10 @@ def file_read(path):
     dna_table = pd.DataFrame.from_dict(dna_list, orient='index')
     dna_table.reset_index(inplace=True)
     dna_table.columns = ['taxon', path.split('\\')[-1]]
+    length_variables = dna_table[path.split('\\')[-1]].apply(len).unique()
+    if len(length_variables) > 1:
+        print(path, 'contain sequences with different length. May be I forgot align it?')
+        raise NameError()
     return dna_table
 
 
@@ -49,18 +53,19 @@ args = parser()
 path_input = vars(args)['in']
 
 # read files and merge all alignments to one dataframe
+length = {}
 for path in path_input:
     one_gene_table = file_read(path)
+    length[path.split('\\')[-1]] = len(one_gene_table[path.split('\\')[-1]][1])
     if 'all_genes_table' not in globals():
         all_genes_table = one_gene_table
     else:
         all_genes_table = all_genes_table.merge(one_gene_table, left_on='taxon', right_on='taxon', how='outer')
 
-# compute length of each gene and fill NA by '-'
-length = all_genes_table.iloc[1].str.len()[1:].to_dict()
+# fill NA by '-'
 all_genes_table['all_genes'] = str()
 for gene in length.keys():
-    all_genes_table[gene].fillna(length[gene] * '-', inplace=True)
+    all_genes_table[gene].fillna(int(length[gene]) * '-', inplace=True)
     all_genes_table['all_genes'] = all_genes_table['all_genes'] + all_genes_table[gene]
 
 # write OUT and NEXUS files
