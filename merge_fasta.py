@@ -36,7 +36,7 @@ def file_read(path):
                     temp_taxon = line
                 else:
                     print(path, 'contain duplicated name', line)
-                    raise NameError()
+                    raise NameError('DublicatedGenes')
             else:
                 dna_list[temp_taxon] = dna_list[temp_taxon] + line
     dna_table = pd.DataFrame.from_dict(dna_list, orient='index')
@@ -44,8 +44,8 @@ def file_read(path):
     dna_table.columns = ['taxon', path.split('\\')[-1]]
     length_variables = dna_table[path.split('\\')[-1]].apply(len).unique()
     if len(length_variables) > 1:
-        print(path, 'contain sequences with different length. May be I forgot align it?')
-        raise NameError()
+        print(path, 'contain sequences with different length. May be you forgot align it?')
+        raise NameError('NotAlignment')
     return dna_table
 
 
